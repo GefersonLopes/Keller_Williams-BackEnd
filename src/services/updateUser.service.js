@@ -3,7 +3,7 @@ import { users } from "../database";
 export const updateUser_Service = (id, nome, empresa) => {
     const user = users.find(u => u.id === id);
     if (!user) {
-        return { message: "User not found" };
+        throw new Error("User not found");
     };
 
     const userUpdated = {

@@ -9,7 +9,7 @@ export const createUser = (req, res) => {
     }
     catch(err) { 
         if(err instanceof Error) {
-            return res.status(500).json(err.message);
+            return res.status(400).json({message: err.message});
         }
     }
 };

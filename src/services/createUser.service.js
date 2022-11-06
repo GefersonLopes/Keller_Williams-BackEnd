@@ -5,7 +5,7 @@ export const createUser_Service = (nome, empresa, permissao) => {
 
     const verifyUser = users.find(user => user.nome === nome);
     if (verifyUser) {
-        return { message: "User already exists" };
+        throw new Error(`User ${nome} already exists`);
     };
 
     const validNome = nome.length === 0;
@@ -13,10 +13,10 @@ export const createUser_Service = (nome, empresa, permissao) => {
     const validPermissao = permissao.length === 0;
     
     if (validNome || validEmpresa || validPermissao) {
-        return { message: "data is required" };
+        throw new Error("data is required");
     };
     if (!nome || !empresa || !permissao) {
-        return { message: "data is required" };
+        throw new Error("data is required");
     }
 
     const newUser = {
